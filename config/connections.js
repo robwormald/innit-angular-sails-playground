@@ -24,10 +24,6 @@ module.exports.connections = {
   //
   // Installed by default.
   //
-  localDiskDb: {
-    adapter: 'sails-disk'
-  },
-
   redisStore : {
     adapter : 'sails-redis',
     url : process.env.REDISCLOUD_URL
