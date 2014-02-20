@@ -26,7 +26,9 @@ module.exports.connections = {
   //
   redisStore : {
     adapter : 'sails-redis',
-    url : process.env.REDISCLOUD_URL
+    port: process.env.REDIS_PORT,
+    host: process.env.REDIS_HOST,
+    password: process.env.REDIS_PASSWORD,
   },
 
    dataStore : {
