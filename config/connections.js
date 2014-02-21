@@ -28,7 +28,7 @@ module.exports.connections = {
    dataStore : {
     adapter : 'sails-postgresql',
     url : process.env.DATABASE_URL,
-    ssl : true
+    //ssl : true
 
 
   },
@@ -45,9 +45,3 @@ module.exports.connections = {
 
 };
 
-
-
-
-// REDIS_PORT=16871
-// REDIS_PASSWORD=GCSP9jTFreP9H8k3
-// REDIS_DB=redis-app22351035
