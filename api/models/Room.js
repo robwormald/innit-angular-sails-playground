@@ -8,6 +8,7 @@
 
 module.exports = {
 
+
   // Subscribers only get to hear about update and destroy events,
   // and about users joining or leaving the room.
   // This lets us keep our count of users in the room accurate, without

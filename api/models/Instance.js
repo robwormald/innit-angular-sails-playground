@@ -7,7 +7,12 @@
 
 module.exports = {
 
+
+
 	attributes: {
+
+		instance_name : {type : 'string'},
+		
 
 
 	}
