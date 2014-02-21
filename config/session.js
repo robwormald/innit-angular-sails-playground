@@ -35,15 +35,11 @@ module.exports.session = {
   // Read more about options at: https://github.com/visionmedia/connect-redis
   //
   adapter: 'redis',
-  port: process.env.REDIS_PORT,
-  host: process.env.REDIS_HOST,
-  pass: process.env.REDIS_PASSWORD,
-  db: process.env.REDIS_DB,
-  prefix : 'sess:'
-  // ttl: <redis session TTL in seconds>,
-  // db: 0,
-  // pass: <redis auth password>
-  // prefix: 'sess:'
+  url: process.env.REDISCLOUD_URL,
+  ttl: 10000,
+//db: 0,
+
+  prefix: 'sess:'
 
 
   // Uncomment the following lines to use your Mongo adapter as a session store

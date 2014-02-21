@@ -17,26 +17,26 @@ module.exports.models = {
   // (defaults to localDiskDb)
   connection: 'dataStore',
 
-  migrate : 'drop',
+  //migrate : 'drop',
 
-  attributes : {
+  //xattributes : {
   	
-  	id : {
-      type : 'string',
-      primaryKey : true,
-      required : true,
+ //  	id : {
+ //      type : 'string',
+ //      primaryKey : true,
+ //      required : true,
 
-    },
-  },
-  beforeCreate : function(values,cb){
+ //    },
+ //  },
+ //  beforeCreate : function(values,cb){
 	
-	if(!values.id){
+	// if(!values.id){
 
-      values.id = uuid.v4();
-    }
+ //      values.id = uuid.v4();
+ //    }
 
-    cb()
+ //    cb()
 
 
-  }
+ //  }
 };

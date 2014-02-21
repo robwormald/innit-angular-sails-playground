@@ -1,7 +1,7 @@
 {
   "name": "sails-angular-playground",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a Sails + Angular JS Sample application",
   "keywords": [],
   "dependencies": {
@@ -25,7 +25,9 @@
     "sails-postgresql": "~0.10.0-rc1",
     "node-uuid": "~1.4.1",
     "socketio-jwt": "~2.0.1",
-    "redis-url": "~0.2.0"
+    "redis-url": "~0.2.0",
+    "lodash": "latest",
+    "async": "~0.2.10"
   },
   "scripts": {
     "start": "node app.js",

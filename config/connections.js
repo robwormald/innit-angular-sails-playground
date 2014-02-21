@@ -24,13 +24,6 @@ module.exports.connections = {
   //
   // Installed by default.
   //
-  redisStore : {
-    adapter : 'sails-redis',
-  port: process.env.REDIS_PORT,
-  host: process.env.REDIS_HOST,
-  pass: process.env.REDIS_PASSWORD,
-  db: process.env.REDIS_DB
-  },
 
    dataStore : {
     adapter : 'sails-postgresql',
@@ -38,7 +31,13 @@ module.exports.connections = {
    // ssl : true
 
 
-  }
+  },
+
+   // username : 'rediscloud'
+//db: 0,
+   //password: process.env.REDIS_PASSWORD,
+
+    
 
 
   // More adapters:
@@ -49,3 +48,6 @@ module.exports.connections = {
 
 
 
+// REDIS_PORT=16871
+// REDIS_PASSWORD=GCSP9jTFreP9H8k3
+// REDIS_DB=redis-app22351035

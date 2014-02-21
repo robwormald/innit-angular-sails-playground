@@ -62,17 +62,17 @@ module.exports.sockets = {
   onDisconnect: function(session, socket) {
 
       // Look up the user ID using the connected socket
-      var userId = session.users[sails.sockets.id(socket)].id;
+      // var userId = session.users[sails.sockets.id(socket)].id;
 
-      // Get the user instance
-      User.findOne(userId).populate('rooms').exec(function(err, user) {
+      // // Get the user instance
+      // User.findOne(userId).populate('rooms').exec(function(err, user) {
 
-        // Destroy the user instance
-        User.destroy({id:user.id}).exec(function(){});
+      //   // Destroy the user instance
+      //   User.destroy({id:user.id}).exec(function(){});
 
-        // Publish the destroy event to every socket subscribed to this user instance
-        User.publishDestroy(user.id, null, {previous: user});
-      });
+      //   // Publish the destroy event to every socket subscribed to this user instance
+      //   User.publishDestroy(user.id, null, {previous: user});
+      // });
 
   },
 
@@ -112,15 +112,12 @@ module.exports.sockets = {
   //
   // Luckily, Socket.io (and consequently Sails.js) apps support Redis for sockets by default.
   // To enable a remote redis pubsub server: 
-  adapter: 'redis',
-  port: process.env.REDIS_PORT,
-  host: process.env.REDIS_HOST,
-  pass: process.env.REDIS_PASSWORD,
-  db: process.env.REDIS_DB,
-  // host: '127.0.0.1',
-  // port: 6379,
-  // db: 'sails',
-  // pass: '<redis auth password>'
+ adapter: 'redis',
+// url: process.env.REDISCLOUD_URL,
+ host: process.env.REDIS_HOST,
+ port: process.env.REDIS_PORT,
+ db: process.env.REDIS_DB,
+ pass: process.env.REDIS_PASSWORD,
   // Worth mentioning is that, if `adapter` config is `redis`, 
   // but host/port is left unset, Sails will try to connect to redis 
   // running on localhost via port 6379 
