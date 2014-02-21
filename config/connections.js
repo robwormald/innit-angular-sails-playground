@@ -27,7 +27,7 @@ module.exports.connections = {
 
    dataStore : {
     adapter : 'sails-postgresql',
-    url : process.env.HEROKU_POSTGRESQL_NAVY_URL,
+    url : process.env.DATABASE_URL,
    // ssl : true
 
 
