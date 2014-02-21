@@ -27,21 +27,17 @@ module.exports.connections = {
 
    dataStore : {
     adapter : 'sails-postgresql',
-    url : process.env.HEROKU_POSTGRESQL_GRAY_URL,
-    //ssl : true
+    host: process.env.PG_HOST,
+    database : process.env.PG_DATABASE,
+    user: process.env.PG_USERNAME,
+    password: process.env.PG_PASSWORD,
+    port: 5452,
+   // ssl: true
 
 
   },
 
-   // username : 'rediscloud'
-//db: 0,
-   //password: process.env.REDIS_PASSWORD,
-
-    
-
-
-  // More adapters:
-  // https://github.com/balderdashy/sails
 
 };
 
+console.log(process.env)
