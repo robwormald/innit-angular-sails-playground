@@ -17,7 +17,7 @@ module.exports.models = {
   // (defaults to localDiskDb)
   connection: 'dataStore',
 
-  //migrate : 'drop',
+  migrate : 'alter',
 
   //xattributes : {
   	
