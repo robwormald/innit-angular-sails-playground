@@ -22,7 +22,10 @@ module.exports = {
 		users: {
 			collection: 'user',
 			via: 'rooms'
-		}
+		},
+    instance : {
+      model : 'instance'
+    }
     
   },
 

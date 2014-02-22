@@ -27,7 +27,8 @@
     "socketio-jwt": "~2.0.1",
     "redis-url": "~0.2.0",
     "lodash": "latest",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "jsonwebtoken": "~0.1.0"
   },
   "scripts": {
     "start": "node app.js",

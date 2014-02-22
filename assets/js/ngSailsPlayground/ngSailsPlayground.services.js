@@ -1,10 +1,19 @@
 angular.module('sailsApp.services',[]).
 
+factory('sailsFirehose',['sails',function(sails){
+
+
+
+}])
+
+
 
 factory('sailsChat',['sails',function(sails){
 
-	//sails.
-
+	_sailsChat : {
+		rooms : [],
+		users: []
+	}
 
 
 

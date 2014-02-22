@@ -22,7 +22,6 @@ module.exports = {
 	
 	username: 'string',
 	password: 'string',
-	domain : {model : 'domain'},
 	rooms: {
 		collection: 'room',
 		via: 'users',

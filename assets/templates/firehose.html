@@ -1,9 +1,11 @@
-<div class="container transparent">
-	<div>
+<div class="container">
+	<div class="row">
 		<h3 class="text-success">Firehose</h3>
+		<p><button ng-click="openHose()" class="btn btn-success">Open</button></p>
+		
 	</div>
 
 	<ul>
-		<li ng-repeat="event in firehose">event</li>
+		<li class="text-success" ng-repeat="event in firehoseEvents">{{event.timestamp | date:'short'}}: {{event.name}} : {{event.model}} : {{event.verb}} </li>
 	</ul>
 </div>

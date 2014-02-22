@@ -18,7 +18,7 @@ module.exports.sockets = {
 
     var socketId = sails.sockets.id(socket);
 
-    sails.sockets.emit(socketId, 'sails:connected', {timestamp : new Date()});
+    sails.sockets.emit(socketId, 'connected', {timestamp : new Date()});
 
 
 
@@ -155,20 +155,20 @@ module.exports.sockets = {
   // use cases, Sails allows you to override the authorization behavior 
   // with your own custom logic by specifying a function, e.g:
   
-  // authorization: function authorizeAttemptedSocketConnection(reqObj, cb) {
+  authorization: function authorizeAttemptedSocketConnection(reqObj, cb) {
 
-  //       // Any data saved in `handshake` is available in subsequent requests
-  //       // from this as `req.socket.handshake.*`
-
-  //       //
-  //       // to allow the connection, call `cb(null, true)`
-  //       // to prevent the connection, call `cb(null, false)`
-  //       // to report an error, call `cb(err)`
+        // Any data saved in `handshake` is available in subsequent requests
+        // from this as `req.socket.handshake.*`
+        console.log(reqObj)
+        //  
+        // to allow the connection, call `cb(null, true)`
+        // to prevent the connection, call `cb(null, false)`
+        // to report an error, call `cb(err)`
       
-  //       cb(null,true)
-  //   },
+        cb(null,true)
+    },
   
-  authorization: true,
+  //authorization: true,
 
   // Match string representing the origins that are allowed to connect to the Socket.IO server
   origins: '*:*',

@@ -1,8 +1,13 @@
 
 /**
- * ngSails Socket.io Provider
+ * innit.sails.io.js
+ *
+ * 
  *
  * Wraps socket.io to plug it into Angular's digest cycle
+ *
+ * 
+ * 
  *
  * Code from :
  *
@@ -10,26 +15,47 @@
  * 
  * (c) 2014 Brian Ford http://briantford.com
  * License: MIT
- *
  * 
- * 
- * - sails.io.js by Balderdashy : https://github.com/balderdashy/sails
+ * sails.io.js by Balderdashy : https://github.com/balderdashy/sails
  *
  * 
  * 
  * 
  */
 
- angular.module('ngSails.io', []).
 
- provider('sailsSocketFactory', function () {
+ angular.module('innit.sails.io', [])
+//decorate angular's built in $q so we can have the same success/callback handlers as $http
+.config(function ($provide) {
+  $provide.decorator('$q', function ($delegate) {
+    var defer = $delegate.defer;
+    $delegate.defer = function () {
+      var deferred = defer();
+      deferred.promise.success = function (fn) {
+        deferred.promise.then(function (value) {
+          fn(value);
+        });
+        return deferred.promise;
+      };
+      deferred.promise.error = function (fn) {
+        deferred.promise.then(null, function (value) {
+          fn(value);
+        });
+        return deferred.promise;
+      };
+      return deferred;
+    };
+    return $delegate;
+  });
+
+}).provider('sailsSocketFactory', function () {
 
     // when forwarding events, prefix the event name
     var defaultPrefix = 'sails:',
     ioSocket;
 
     // expose to provider
-    this.$get = ['$q','$rootScope','$timeout',function ($q, $rootScope, $timeout) {
+    this.$get = ['$q','$rootScope','$timeout','$window',function ($q, $rootScope, $timeout,$window) {
 
     	var asyncAngularify = function (socket, callback) {
     		return callback ? function () {
@@ -78,9 +104,13 @@
     	}
 
     return function socketFactory (options) {
+
     	options = options || {};
-    	var socket = options.ioSocket || io.connect(options.baseUrl || 'http://localhost:1337');
-    	var prefix = options.prefix || defaultPrefix;
+    	var socket = options.ioSocket || io.connect(options.baseUrl || $window.location.origin ||'http://localhost:1337');
+
+
+      //override socket.io's $emit event to trap all incoming events
+      var prefix = options.prefix || defaultPrefix;
     	var defaultScope = options.scope || $rootScope;
 
       var eventLog = []
@@ -92,7 +122,7 @@
     		socket.on(eventName, asyncAngularify(socket, callback));
     	};
 
-    	var wrappedSocket = {
+    	var sailsSocket = {
     		on: addListener,
     		addListener: addListener,
 
@@ -153,10 +183,9 @@
 
       };
 
-      wrappedSocket.forward(['sails_firehose','firehose'])
+    
 
-
-      return wrappedSocket;
+      return sailsSocket;
   };
 }];
 });

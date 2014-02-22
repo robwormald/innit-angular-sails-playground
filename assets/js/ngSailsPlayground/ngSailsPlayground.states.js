@@ -1,11 +1,16 @@
 angular.module('ngSailsPlayground.states',['ui.router'])
 
-.config(['sailsProvider','$stateProvider','$urlRouterProvider',function (sailsProvider,$stateProvider,$urlRouterProvider) {
+.config(['$sailsProvider','$stateProvider','$urlRouterProvider',function ($sailsProvider,$stateProvider,$urlRouterProvider) {
 
 	$stateProvider.state('app',{
 		controller : 'AppRootController',
 		templateUrl : 'templates/playgroundLayout.html',
-		abstract : true
+		abstract : true,
+		resolve : {
+			'$sails' : function($sails){
+				return $sails
+			}
+		}
 	})
 
 	$stateProvider.state('app.home',{

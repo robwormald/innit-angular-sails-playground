@@ -1,34 +1,15 @@
-<div>
-	
-	<div class="row">
-  <div class="col-md-3" >
-  	<div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Rooms</h3>
+<div class="container-fluid">
+<div class="col-md-3">
+<div class="list-group">
+                <a href="#" class="list-group-item active">
+                  Create a New Room
+                </a>
+                <a ng-repeat="room in rooms" href="#" class="list-group-item">{{room.name}}
+                </a>
+                <a href="#" class="list-group-item">Morbi leo risus
+                </a>
               </div>
-              <div class="panel-body">
-                <ul class="list-group">
-                  <li class="list-group-item">Cras justo odio </li>
-                </ul>
-              </div>
-            </div>
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-default" style="bottom:10px;">
-<div class="panel-heading"><h3 class="panel-title">{{activeRoom || 'Join or Add a Room'}}</h3></div>
-  <div class="panel-body">
-    Hello
-  </div>
-    </div>
-  	
-  </div>
-
-  <div class="col-md-3 panel panel-default">
-  	<div class="panel-heading">Users</div>
-  <div class="panel-body">
-    Hello
-  </div>
-  </div>
 </div>
-
+<div class="col-md-6"></div>
+<div class="col-md-3"></div>
 </div>

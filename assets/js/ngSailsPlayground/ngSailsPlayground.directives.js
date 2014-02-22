@@ -6,7 +6,10 @@ angular.module('ngSailsPlayground.directives',[])
 		replace : true,
 		templateUrl : 'templates/navbar.html',
 		scope : {
-			navLinks : '='
+			navLinks : '=',
+			authenticated : '=',
+			user: '=',
+			connected: '='
 		},
 		link: function (scope, iElement, iAttrs) {
 			

@@ -6,9 +6,14 @@ angular.module('ngSailsPlayground.controllers',[])
 
 }])
 
-.controller('ChatController', ['$scope', function ($scope) {
+.controller('ChatController', ['$scope', '$sails', function ($scope,$sails) {
 	
-	console.log('rest controller')
+	$sails.get('/rooms').then(function(rooms){
+
+		$scope.rooms = rooms;
+
+	})
+	
 
 }])
 
@@ -18,12 +23,25 @@ angular.module('ngSailsPlayground.controllers',[])
 
 }])
 
-.controller('FirehoseController', ['$scope', 'sails', function ($scope,sails) {
+.controller('FirehoseController', ['$scope', '$sails', function ($scope,$sails) {
 	
-	console.log('rest controller')
+	$scope.$on('sails:firehose',function(ev,data){
 
-	$scope.$on('sails:message',function(data){
-		console.log(data)
+		$scope.firehoseEvents.push({event : ev, data : data, timestamp : new Date()})
+
 	})
+
+	$scope.firehoseEvents = []
+
+	$scope.openHose = function(){
+
+		$sails.get('/firehose')
+	}
+	$scope.closeHose = function(){
+
+		$sails.firehose.close()
+	}
+
+	
 
 }])
